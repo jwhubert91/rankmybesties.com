@@ -75,8 +75,13 @@ export default function Home() {
             >
               Rank your All-In besties and share with your friends on Twitter
             </Typography>
-            <Button variant="contained" size="large" sx={{ bottom: "0" }}>
-              Sign Up with Twitter <TwitterIcon sx={{ paddingLeft: 1 }} />
+            <Button
+              variant="contained"
+              size="medium"
+              sx={{ bottom: "0", paddingY: 1.5 }}
+            >
+              Connect your Twitter to continue
+              <TwitterIcon sx={{ paddingLeft: 1 }} />
             </Button>
           </Box>
         </main>
