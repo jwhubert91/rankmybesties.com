@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Container, Typography, Box, Button } from "@mui/material"
 import Footer from "../components/Footer"
 import TwitterIcon from "@mui/icons-material/Twitter"
-import AllInImage from "../assets/images/all-in-background.png"
+import Ranker from "../components/Ranker"
 
 export default function Home() {
   return (
@@ -16,7 +16,12 @@ export default function Home() {
           width: "100%",
         }}
       >
-        <Image src={AllInImage} layout="fill" objectFit="cover" quality={100} />
+        <Image
+          src={"/images/all-in-background.png"}
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
       </div>
       <Container
         sx={{
@@ -52,35 +57,37 @@ export default function Home() {
         </Typography>
         <main
           style={{
+            flex: 1,
             display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-            flexBasis: 1,
-            justifyContent: "space-evenly",
           }}
         >
           <Box
             sx={{
-              flexBasis: 1,
+              flex: 1,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              justifyContent: "space-between",
+              textAlign: "center",
+              paddingY: 2,
             }}
           >
             <Typography
               variant="h6"
               component="h2"
-              sx={{ marginBottom: 16, padding: 0, textAlign: "center" }}
+              sx={{ padding: 0 }}
               maxWidth="400px"
             >
-              Rank your All-In besties and share with your friends on Twitter
+              Rank your All-In besties and share with Twitter to see how you
+              compare
             </Typography>
+            <Ranker />
             <Button
               variant="contained"
-              size="medium"
+              size="small"
               sx={{ bottom: "0", paddingY: 1.5 }}
             >
-              Connect your Twitter to continue
+              Share to Twitter
               <TwitterIcon sx={{ paddingLeft: 1 }} />
             </Button>
           </Box>
