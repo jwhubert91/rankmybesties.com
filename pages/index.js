@@ -21,6 +21,8 @@ export default function Home() {
           layout="fill"
           objectFit="cover"
           quality={100}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
         />
       </div>
       <Container
