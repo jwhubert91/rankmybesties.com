@@ -1,49 +1,26 @@
 import React, { useState } from "react"
 import { Card, Stack } from "@mui/material"
 import BestieCard from "./BestieCard"
-
-const CHAMATH_IMAGE_URL = "/images/besties/chamath.jpeg"
-const FRIEDBERG_IMAGE_URL = "/images/besties/friedberg.jpeg"
-const JASON_IMAGE_URL = "/images/besties/jason.jpeg"
-const SACKS_IMAGE_URL = "/images/besties/sacks.jpeg"
-
-const originalBestieArray = [
-  {
-    name: "Chamath",
-    imgSrc: CHAMATH_IMAGE_URL,
-  },
-  {
-    name: "Friedberg",
-    imgSrc: FRIEDBERG_IMAGE_URL,
-  },
-  {
-    name: "Jason",
-    imgSrc: JASON_IMAGE_URL,
-  },
-  {
-    name: "Sacks",
-    imgSrc: SACKS_IMAGE_URL,
-  },
-]
+import { originalBestieArray } from "../helpers/data"
 
 function Ranker() {
   const [besties, setBesties] = useState(originalBestieArray)
+
   const selectNextRank = (currentRank, nextRank) => {
-    const workingArrayOfBesties = besties
-    const bestieObject = workingArrayOfBesties[currentRank]
+    const bestieObject = besties[currentRank]
     if (nextRank < currentRank) {
       // bestie is being promoted
       // shift all besties from nextRank to currentRank down one
       const nextArray = []
       for (let i = 0; i < 4; i++) {
         if (i < nextRank) {
-          nextArray.push(workingArrayOfBesties[i])
+          nextArray.push(besties[i])
         } else if (i === nextRank) {
-          const prevObject = workingArrayOfBesties[i]
+          const prevObject = besties[i]
           nextArray.push(bestieObject)
           nextArray.push(prevObject)
         } else if (i > nextRank && i !== currentRank) {
-          nextArray.push(workingArrayOfBesties[i])
+          nextArray.push(besties[i])
         }
       }
       setBesties(nextArray)
@@ -53,20 +30,21 @@ function Ranker() {
       const nextArray = []
       for (let i = 0; i < 4; i++) {
         if (i < currentRank) {
-          nextArray.push(workingArrayOfBesties[i])
+          nextArray.push(besties[i])
         } else if (i > currentRank && i < nextRank) {
-          nextArray.push(workingArrayOfBesties[i])
+          nextArray.push(besties[i])
         } else if (i === nextRank) {
-          const prevObject = workingArrayOfBesties[i]
+          const prevObject = besties[i]
           nextArray.push(prevObject)
           nextArray.push(bestieObject)
         } else if (i > nextRank) {
-          nextArray.push(workingArrayOfBesties[i])
+          nextArray.push(besties[i])
         }
       }
       setBesties(nextArray)
     }
   }
+
   return (
     <Card
       sx={{
